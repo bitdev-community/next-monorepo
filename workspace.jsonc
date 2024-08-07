@@ -1,0 +1,79 @@
+/**
+ * this is the main configuration file of your bit workspace.
+ * for full documentation, please see: https://bit.dev/reference/workspace/workspace-json
+ **/ {
+  "$schema": "https://static.bit.dev/teambit/schemas/schema.json",
+  /**
+   * main configuration of the Bit workspace.
+   **/
+  "teambit.workspace/workspace": {
+    /**
+     * the name of the component workspace. used for development purposes.
+     **/
+    "name": "my-workspace-name",
+    /**
+     * set the icon to be shown on the Bit server.
+     **/
+    "icon": "https://static.bit.dev/brands/bit-logo-min.png",
+    /**
+     * default directory to place a component during `bit import` and `bit create`.
+     * the following placeholders are available:
+     * name - component name includes namespace, e.g. 'ui/button'.
+     * scopeId - full scope-id includes the owner, e.g. 'teambit.compilation'.
+     * scope - scope name only, e.g. 'compilation'.
+     * owner - owner name in bit.dev, e.g. 'teambit'.
+     **/
+    "defaultDirectory": "{name}",
+    /**
+     * default scope for all components in workspace.
+     **/
+    "defaultScope": "learnbit-react.next-monorepo",
+    "resolveAspectsFromNodeModules": true,
+    "resolveEnvsFromRoots": true
+  },
+  /**
+   * Enable generator templates by uncommenting the desired environments below.
+   * These generators scaffold components for Node, React, Vue, and Angular.
+   * After uncommenting, run `bit install` to make them available in your workspace.
+   * Explore more dev environments at: https://bit.dev/docs/getting-started/composing/dev-environments
+   **/
+  "teambit.generator/generator": {
+    "envs": [
+      "frontend.nextjs/nextjs-env",
+      "learnbit-react.custom-mui-lib/dev/react-mui"
+    ]
+  },
+  /**
+   * main configuration for component dependency resolution.
+   **/
+  "teambit.dependencies/dependency-resolver": {
+    /**
+     * choose the package manager for Bit to use. you can choose between 'yarn', 'pnpm'
+     */
+    "packageManager": "teambit.dependencies/pnpm",
+    "policy": {
+      "dependencies": {
+        "@frontend/nextjs.app-types.nextjs-app-type": "^0.4.8",
+        "@frontend/nextjs.examples.bit-logo": "^0.4.5",
+        "@learnbit-react/custom-mui-lib.actions.button": "^0.0.17",
+        "@learnbit-react/custom-mui-lib.actions.icon-button": "^0.0.11",
+        "@learnbit-react/custom-mui-lib.dev.react-mui": "^0.0.9",
+        "@learnbit-react/custom-mui-lib.dev.react-mui-foundation": "^0.0.2",
+        "@learnbit-react/custom-mui-lib.layout.box": "^0.0.1",
+        "@learnbit-react/custom-mui-lib.layout.toolbar": "^0.0.1",
+        "@learnbit-react/custom-mui-lib.theme.create-theme": "^0.0.7",
+        "@learnbit-react/custom-mui-lib.theme.default-theme": "^0.0.11",
+        "@learnbit-react/custom-mui-lib.typography.get-default-fonts": "^0.0.3",
+        "@learnbit-react/custom-mui-lib.typography.typography": "^0.0.6"
+      },
+      "peerDependencies": {}
+    },
+    "linkCoreAspects": true,
+    "rootComponents": true
+  },
+  "teambit.workspace/workspace-config-files": {
+    "enableWorkspaceConfigWrite": true
+  },
+  "learnbit-react.next-monorepo/app1": {},
+  "learnbit-react.next-monorepo/app2": {}
+}
